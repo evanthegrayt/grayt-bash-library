@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+readonly INSTALL_PATH="$( cd $( dirname $0 )/../ && pwd -P )"
+
+path="${1:-/usr/local/bin}"
+
+if ! [[ -d $path ]]; then
+    echo "[$path] is not a directory. Exiting." >&2
+    exit 1
+fi
+
+printf "About to install files to $path. Continue? (y/n): "
+read
+
+case $REPLY in
+    y|Y)
+        echo "Installing to '$path'."
+        ;;
+    n|N)
+        echo "To use a different directory, pass a path as an argument."
+        echo "Exiting."
+        exit
+        ;;
+    *)
+        echo "Invalid option. Exiting." >&2
+        exit 1
+        ;;
+esac
+
+for file in "$INSTALL_PATH"/lib/*.sh; do
+    if [[ -f "$path/${file##*/}" ]]; then
+        echo "$path/${file##*/} already exists. Skipping."
+        continue
+    fi
+    ln -s "$file" "$path/${file##*/}"
+done
+
