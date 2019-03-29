@@ -1,5 +1,7 @@
 # bash-lib
-Library of common bash functions I commonly use.
+A library of `bash` functions to help deal with dates, arrays, strings, etc.
+
+Please feel free to contribute!
 
 ## Installation
 Clone the repository.
