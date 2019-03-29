@@ -1,4 +1,4 @@
-# bash-lib
+# grayt-bash-library
 A library of `bash` functions to help deal with dates, arrays, strings, etc.
 
 Please feel free to contribute!
@@ -6,12 +6,12 @@ Please feel free to contribute!
 ## Installation
 Clone the repository.
 ```sh
-git clone https://github.com/evanthegrayt/bash-lib.git
+git clone https://github.com/evanthegrayt/grayt-bash-library.git
 ```
 If you want the files to be linked in an existing directory in your `$PATH`, Run
 the install script.
 ```sh
-cd bash-lib
+cd grayt-bash-library
 bin/install
 ```
 If you want to install them somewhere other than `/usr/local/bin`, pass a
@@ -20,14 +20,14 @@ directory as an argument.
 bin/install ~/bin
 ```
 If you want to just add the repository to your path, add the following line to
-your `~/.bashrc`, assuming `$path_to_repo` is the full path to the `bash-lib`
-repository:
+your `~/.bashrc`, assuming `$path_to_repo` is the full path to the
+`grayt-bash-library` repository:
 ```sh
 export PATH=$PATH:$path_to_repo/lib
 ```
 Lastly, you could just `source` the files without adding them to your path by
 passing the full path to the files. Assuming `$path_to_repo` is the full path to
-the `bash-lib` repository:
+the `grayt-bash-library` repository:
 ```sh
 source $path_to_repo/lib/arrays.sh # ...or whichever file you want to source.
 ```
@@ -85,7 +85,8 @@ echo $today
 While I'd like to think I'm decent at shell scripting, I'll be the first to
 admit that my knowledge of true `bash`-isms is lacking. If you see something
 done with an external command that could be done with pure `bash`, please
-[submit an issue](https://github.com/evanthegrayt/bash-lib/issues/new). The same
+[submit an
+issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new). The same
 goes for POSIX compatibility; let me know if you see something non-POSIX that
 could be done in a way that maintains compliance, or better yet, uses pure `bash`.
 
