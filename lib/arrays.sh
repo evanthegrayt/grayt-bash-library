@@ -1,4 +1,4 @@
-ARRAY_includes_element() {
+ARRAYS_includes_element() {
     local string="$1"
 
     for element in "${@:2}"; do
@@ -9,7 +9,7 @@ ARRAY_includes_element() {
     return 1
 }
 
-ARRAY_sort_uniq() {
+ARRAYS_sort_uniq() {
     echo "$@" | sed 's/ /\n/g' | sort -u | sed 's/\n/ /g'
 }
 

@@ -2,30 +2,42 @@
 
 readonly INSTALL_PATH="$( cd $( dirname $0 )/../ && pwd -P )"
 
+process_input() {
+    local user_response="$1"
+    local accept_msg="$2"
+
+    case $user_response in
+        y|Y)
+            echo "$accept_msg"
+            ;;
+        n|n)
+            echo "Exiting..."
+            exit
+            ;;
+        *)
+            echo "Invalid option. Exiting." >&2
+            exit 1
+            ;;
+    esac
+}
+
 path="${1:-/usr/local/bin}"
 
 if ! [[ -d $path ]]; then
     echo "[$path] is not a directory. Exiting." >&2
     exit 1
+elif ! [[ $PATH =~ $path ]]; then
+    echo "[$path] is not in your \$PATH."
+    echo "This means you won't be able to source the files without"
+    printf "specifying the full path to the file. Continue anyway? (y/n): "
+    read
+    process_input "$REPLY" "Continuing with installation"
 fi
 
-printf "About to install files to $path. Continue? (y/n): "
+printf "About to install files to [$path]. Continue? (y/n): "
 read
 
-case $REPLY in
-    y|Y)
-        echo "Installing to '$path'."
-        ;;
-    n|N)
-        echo "To use a different directory, pass a path as an argument."
-        echo "Exiting."
-        exit
-        ;;
-    *)
-        echo "Invalid option. Exiting." >&2
-        exit 1
-        ;;
-esac
+process_input "$REPLY" "Installing to [$path]."
 
 for file in "$INSTALL_PATH"/lib/*.sh; do
     if [[ -f "$path/${file##*/}" ]]; then
