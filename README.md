@@ -67,6 +67,7 @@ arr=(one two three)
 if ARRAYS_includes_element 'two' "${arr[@]}"; then
     echo "'two' is in the array."
 fi
+
 # => 'two' is in the array.
 ```
 Functions in `bash` can't return a string, so if the function "returns" a
@@ -79,6 +80,7 @@ source dates.sh
 today=$( DATES_todays_date )
 
 echo $today
+
 # => 20190328
 # (Date formats can be changed with optional arguments)
 ```
