@@ -1,5 +1,6 @@
 # grayt-bash-library
-A library of `bash` functions to help deal with dates, arrays, strings, etc.
+A library of `bash` functions to help deal with [dates](lib/dates.sh),
+[arrays](lib/arrays.sh), [strings](lib/strings.sh), [logging](lig/log.sh), etc.
 
 Please feel free to contribute!
 
