@@ -75,6 +75,7 @@ have to capture it using command substitution if you need to store it in a
 variable:
 ```sh
 source dates.sh
+
 today=$( DATES_todays_date )
 
 echo $today
