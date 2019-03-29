@@ -1,39 +1,39 @@
 # "public" functions
 
-DATES_get_month_name() {
+DATE_get_month_name() {
     local EDATE="$1"
 
     date --date="$EDATE" +%B
 }
 
-DATES_todays_date() {
+DATE_todays_date() {
     local OPTION=$1
     local FORMAT=$( _set_date_format $OPTION )
 
     date "$FORMAT"
 }
 
-DATES_first_of_month() {
+DATE_first_of_month() {
     local OPTION=$2
-    local DATE=$( DATES_parse_date "$1" $OPTION )
+    local DATE=$( DATE_parse_date "$1" $OPTION )
     local FORMAT=$( _set_date_format $OPTION )
 
-    DATE="$( DATES_parse_date $DATE | cut -c1-6 )01"
+    DATE="$( DATE_parse_date $DATE | cut -c1-6 )01"
 
     date -d "$DATE" "$FORMAT"
 }
 
-DATES_first_of_year() {
+DATE_first_of_year() {
     local OPTION=$2
-    local DATE=$( DATES_parse_date "$1" $OPTION )
+    local DATE=$( DATE_parse_date "$1" $OPTION )
     local FORMAT=$( _set_date_format $OPTION )
 
-    DATE="$( DATES_parse_date $DATE | cut -c 1-4 )0101"
+    DATE="$( DATE_parse_date $DATE | cut -c 1-4 )0101"
 
     date -d "$DATE" "$FORMAT"
 }
 
-DATES_parse_date() {
+DATE_parse_date() {
     local DATE=$1
     local OPTION=$2
     local FORMAT=$( _set_date_format $OPTION )

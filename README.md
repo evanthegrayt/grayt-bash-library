@@ -1,6 +1,6 @@
 # grayt-bash-library
-A library of `bash` functions to help deal with [dates](lib/dates.sh),
-[arrays](lib/arrays.sh), [strings](lib/strings.sh), [logging](lib/log.sh), etc.
+A library of `bash` functions to help deal with [dates](lib/date.sh),
+[arrays](lib/array.sh), [strings](lib/string.sh), [logging](lib/log.sh), etc.
 
 Please feel free to contribute!
 
@@ -30,7 +30,7 @@ Lastly, you could just `source` the files without adding them to your path by
 passing the full path to the files. Assuming `$path_to_repo` is the full path to
 the `grayt-bash-library` repository:
 ```sh
-source $path_to_repo/lib/arrays.sh # ...or whichever file you want to source.
+source $path_to_repo/lib/array.sh # ...or whichever file you want to source.
 ```
 
 ## Using the library
@@ -39,19 +39,19 @@ By default, the [install script](bin/install) links the files to
 `/usr/local/bin`, which is usually in your file path. Once the files are in your
 path, you only need to source them by their name.
 ```sh
-source arrays.sh
-# stuff with arrays...
+source array.sh
+# Do stuff with arrays...
 ```
 Functions available in the files are all prefixed with the file name, all
-uppercase. For instance, functions in `dates.sh` are formatted like so:
+uppercase. For instance, functions in `date.sh` are formatted like so:
 ```sh
-# dates.sh
+# date.sh
 
-DATES_get_month_name() {
+DATE_get_month_name() {
   # stuff
 }
 
-DATES_todays_date() {
+DATE_todays_date() {
   # more stuf
 }
 # Etc...
@@ -61,11 +61,11 @@ DATES_todays_date() {
 If the function returns an integer, it is most likely being used as a boolean,
 and can be called as such:
 ```sh
-source arrays.sh
+source array.sh
 
 arr=(one two three)
 
-if ARRAYS_includes_element 'two' "${arr[@]}"; then
+if ARRAY_include 'two' "${arr[@]}"; then
     echo "'two' is in the array."
 fi
 
@@ -76,9 +76,9 @@ string (either by using a command's output or printing a string via `echo`) you
 have to capture it using command substitution if you need to store it in a
 variable:
 ```sh
-source dates.sh
+source date.sh
 
-today=$( DATES_todays_date )
+today=$( DATE_todays_date )
 
 echo $today
 
@@ -88,9 +88,9 @@ echo $today
 Otherwise, if you just want to output the result to the screen, just call the
 function directly:
 ```sh
-source dates.sh
+source date.sh
 
-DATES_todays_date
+DATE_todays_date
 
 # => 20190328
 ```
