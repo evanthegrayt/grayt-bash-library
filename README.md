@@ -71,8 +71,8 @@ fi
 ```
 Functions in `bash` can't return a string, so if the function "returns" a
 string (either by using a command's output or printing a string via `echo`) you
-have to capture it using command substitution:
-
+have to capture it using command substitution if you need to store it in a
+variable:
 ```sh
 source dates.sh
 today=$( DATES_todays_date )
@@ -81,6 +81,16 @@ echo $today
 # => 20190328
 # (Date formats can be changed with optional arguments)
 ```
+Otherwise, if you just want to output the result to the screen, just call the
+function directly:
+```sh
+source dates.sh
+
+DATES_todays_date
+
+# => 20190328
+```
+
 ## Compatibility
 While I'd like to think I'm decent at shell scripting, I'll be the first to
 admit that my knowledge of true `bash`-isms is lacking. If you see something
