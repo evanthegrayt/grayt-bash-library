@@ -2,30 +2,28 @@
 
 readonly INSTALL_PATH="$( cd $( dirname $0 )/../ && pwd -P )"
 
+abort() {
+    local msg="$1"
+
+    echo "$msg" >&2
+    exit 1
+}
+
 process_input() {
     local user_response="$1"
     local accept_msg="$2"
 
     case $user_response in
-        y|Y)
-            echo "$accept_msg"
-            ;;
-        n|n)
-            echo "Exiting..."
-            exit
-            ;;
-        *)
-            echo "Invalid option. Exiting." >&2
-            exit 1
-            ;;
+        y|Y) echo "$accept_msg"             ;;
+        n|N) echo "Exiting..."; exit        ;;
+        *) abort "Invalid option. Exiting." ;;
     esac
 }
 
 path="${1:-/usr/local/bin}"
 
 if ! [[ -d $path ]]; then
-    echo "[$path] is not a directory. Exiting." >&2
-    exit 1
+    abort "[$path] is not a directory. Exiting."
 elif ! [[ $PATH =~ $path ]]; then
     echo "[$path] is not in your \$PATH."
     echo "This means you won't be able to source the files without"
