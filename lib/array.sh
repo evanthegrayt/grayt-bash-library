@@ -2,7 +2,7 @@ ARRAY_include() {
     local string="$1"
 
     for element in "${@:2}"; do
-        if [[ "$element" == "$1" ]]; then
+        if [[ "$element" == "$string" ]]; then
             return 0
         fi
     done
