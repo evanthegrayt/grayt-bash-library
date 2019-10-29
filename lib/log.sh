@@ -2,6 +2,8 @@
 
 # PUBLIC API
 
+##
+# Log general information.
 LOG_info() {
     local msg="$1"
 
@@ -10,6 +12,8 @@ LOG_info() {
     return 0
 }
 
+##
+# Log warnings.
 LOG_warn() {
     local msg="$1"
 
@@ -18,6 +22,18 @@ LOG_warn() {
     return 0
 }
 
+##
+# Log errors.
+LOG_error() {
+    local msg="$1"
+
+    _log 'ERROR' "$msg"
+
+    return 1
+}
+
+##
+# Log errors that cause the script to die.
 LOG_fatal() {
     local msg="$1"
 
