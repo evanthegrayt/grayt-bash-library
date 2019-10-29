@@ -68,3 +68,8 @@ STRING_empty() {
     (( ${#string} == 0 )) && return 0 || return 1
 }
 
+STRING_blank() {
+    local string="$( STRING_strip $1 )"
+
+    (( ${#string} == 0 )) && return 0 || return 1
+}
