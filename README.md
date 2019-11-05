@@ -96,17 +96,10 @@ DATE_todays_date
 ```
 
 ## Compatibility
-While I'd like to think I'm decent at shell scripting, I'll be the first to
-admit that my knowledge of true `bash`-isms is lacking. If you see something
-done with an external command that could be done with pure `bash`, please
-[submit an
-issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new). The same
-goes for POSIX compatibility; let me know if you see something non-POSIX that
-could be done in a way that maintains compliance, or better yet, uses pure `bash`.
+I want to try and maintain POSIX compatibility where possible. Most of the
+scripts I write are in `bash` for portability, but I use `zsh` for my
+interactive shell, and I don't want to maintain two different libraries.
 
-The caveat to this is `bash 3.2` compatibility. I know in `bash 4.0+`, you can
-upcase a word with `${var^^}`, but I use these functions at work quite often,
-and we're running `bash 3.2` (yeah... I know... we're on 5+ now). If this
-repository generates enough interest, I may change this "rule", or at least make
-different version of the `lib` for the newer versions of `bash`.
+That said, if you see something that could be done in a better way, please
+[submit an issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new)
 
