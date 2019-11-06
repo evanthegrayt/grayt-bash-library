@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
 readonly INSTALL_PATH="$( cd $( dirname $0 )/../ && pwd -P )"
-
-abort() {
-    local msg="$1"
-
-    echo "$msg" >&2
-    exit 1
-}
+source $INSTALL_PATH/lib/cli.sh
 
 process_input() {
     local user_response="$1"
@@ -16,14 +10,14 @@ process_input() {
     case $user_response in
         y|Y) echo "$accept_msg"             ;;
         n|N) echo "Exiting..."; exit        ;;
-        *) abort "Invalid option. Exiting." ;;
+        *) CLI_abort "Invalid option. Exiting." ;;
     esac
 }
 
 path="${1:-/usr/local/bin}"
 
 if ! [[ -d $path ]]; then
-    abort "[$path] is not a directory. Exiting."
+    CLI_abort "[$path] is not a directory. Exiting."
 elif ! [[ $PATH =~ $path ]]; then
     echo "[$path] is not in your \$PATH."
     echo "This means you won't be able to source the files without"
