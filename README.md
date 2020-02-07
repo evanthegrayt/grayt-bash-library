@@ -103,3 +103,8 @@ interactive shell, and I don't want to maintain two different libraries.
 That said, if you see something that could be done in a better way, please
 [submit an issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new)
 
+## Self-Promotion
+I do these projects for fun, and I enjoy knowing that they're helpful to people.
+Consider starring [the
+repository](https://github.com/evanthegrayt/grayt-bash-library) if you like it!
+If you love it, follow me [on github](https://github.com/evanthegrayt)!
