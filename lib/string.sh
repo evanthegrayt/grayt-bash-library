@@ -21,7 +21,7 @@ STRING_change_case() {
             STRING_upcase "$string"
             ;;
         down|d|l|lower|small)
-            STRING_upcase "$string"
+            STRING_downcase "$string"
             ;;
     esac
 }
@@ -35,7 +35,7 @@ STRING_strip() {
 ##
 # Removes ALL spaces from string.
 STRING_trim_all_spaces() {
-    tr -d [:space:] <<< $*
+    tr -d '[:space:]' <<< $*
 }
 
 ##
@@ -78,8 +78,6 @@ STRING_length() {
 
     echo "${#string}"
 }
-
-alias STRING_size=STRING_length
 
 ##
 # If string contains no characters, including spaces.
