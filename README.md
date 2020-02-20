@@ -95,6 +95,12 @@ DATE_todays_date
 # => 20190328
 ```
 
+## Testing
+I used [bats](https://github.com/sstephenson/bats) for testing. To run the tests
+yourself, follow the
+[README](https://github.com/sstephenson/bats/blob/master/README.md)'s
+instructions.
+
 ## Compatibility
 I want to try and maintain POSIX compatibility where possible. Most of the
 scripts I write are in `bash` for portability, but I use `zsh` for my

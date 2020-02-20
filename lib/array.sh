@@ -1,10 +1,10 @@
 ##
 # True if element is in array.
 ARRAY_include() {
-    local string="$1"
+    local needle="$1"
 
     for element in "${@:2}"; do
-        if [[ "$element" == "$string" ]]; then
+        if [[ "$element" == "$needle" ]]; then
             return 0
         fi
     done
@@ -13,7 +13,8 @@ ARRAY_include() {
 
 ##
 # Returns array with duplicates removed.
+# NOTE Will not work if array elements contain spaces.
 ARRAY_sort_uniq() {
-    echo "$@" | sed 's/ /\n/g' | sort -u | sed 's/\n/ /g'
+    printf "%s\n" "$@" | sort -u
 }
 
