@@ -55,7 +55,7 @@ source ../lib/string.sh
 }
 
 @test 'string length' {
-    result=$( STRING_length string )
+    result=$( STRING_length 'string' )
     (( $result == 6 ))
 }
 
