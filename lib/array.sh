@@ -1,6 +1,7 @@
 ##
 # True if element is in array.
 ARRAY_include() {
+    local element
     local needle="$1"
 
     for element in "${@:2}"; do
@@ -13,8 +14,7 @@ ARRAY_include() {
 
 ##
 # Returns array with duplicates removed.
-# NOTE Will not work if array elements contain spaces.
+# NOTE: Will not work if array elements contain spaces.
 ARRAY_sort_uniq() {
     printf "%s\n" "$@" | sort -u
 }
-
