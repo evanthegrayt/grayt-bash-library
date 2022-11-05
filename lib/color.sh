@@ -73,4 +73,3 @@ BLWHITE='\e[5;97m'    # White
 
 # Reset Color
 RESET='\e[0m'         # Reset color
-

@@ -29,7 +29,7 @@ STRING_change_case() {
 ##
 # Removes leading and trailing space from string.
 STRING_strip() {
-    echo "$*" | sed -e 's/^ *//g' -e 's/ *$//g'
+    echo "$*" | xargs
 }
 
 ##
@@ -94,4 +94,3 @@ STRING_blank() {
 
     (( ${#string} == 0 )) && return 0 || return 1
 }
-

@@ -5,4 +5,3 @@ CLI_abort() {
     echo "$message" >&2
     exit $return_code
 }
-
