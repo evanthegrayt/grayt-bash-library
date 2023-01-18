@@ -1,0 +1,16 @@
+{
+  "lib/*.sh": {
+    "command": "lib",
+    "type": "lib",
+    "alternate": "test/{}_test.bats"
+  },
+  "test/*_test.bats": {
+    "command": "test",
+    "type": "test",
+    "alternate": "lib/{}.sh"
+  },
+  "bin/*": {
+    "command": "bin",
+    "type": "bin"
+  }
+}

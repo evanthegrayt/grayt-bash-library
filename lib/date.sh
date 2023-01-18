@@ -10,19 +10,19 @@ DATE_month_name() {
 
 ##
 # Today's date.
-DATE_todays_date() {
-    local option=$1
-    local format=$( _set_date_format ${option:-dash} )
+DATE_today() {
+    local option="$1"
+    local format="$( _DATE_set_format ${option:-dash} )"
 
     date "$format"
 }
 
 ##
 # Parses a string as a date and returns in specified format.
-DATE_parse_date() {
-    local date=$1
-    local option=$2
-    local format=$( _set_date_format ${option:-dash} )
+DATE_parse() {
+    local date="$1"
+    local option="$2"
+    local format="$( _DATE_set_format ${option:-dash} )"
 
     date -d "$date" "$format"
 }
@@ -31,7 +31,7 @@ DATE_parse_date() {
 
 ##
 # Sets the date format.
-_set_date_format() {
+_DATE_set_format() {
     local option="${1:-none}"
     local format
 
