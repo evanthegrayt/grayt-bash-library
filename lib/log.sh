@@ -54,8 +54,8 @@ _LOG_write() {
     local file="$LOG_directory/${program}_$( date +%Y%m%d ).log"
     local date=$( date "+%Y-%m-%d %X" )
 
-    [[ -d "$LOG_directory" ]] || mkdir -p "$LOG_directory"
-    [[ -f "$file" ]] || > "$file"
+    [[ -d $LOG_directory ]] || mkdir -p "$LOG_directory"
+    [[ -f $file ]] || > "$file"
 
     echo "${mode:0:1}, [$date] $mode -- : $msg" >> "$file"
 }
