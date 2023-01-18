@@ -50,7 +50,7 @@ STRING_start_with() {
     local substr="$1"
     local string="$2"
 
-    [[ "$string" == "$substr"* ]] && return 0 || return 1
+    [[ $string == $substr* ]] && return 0 || return 1
 }
 
 ##
@@ -59,7 +59,7 @@ STRING_end_with() {
     local substr="$1"
     local string="$2"
 
-    [[ "$string" == *"$substr" ]] && return 0 || return 1
+    [[ $string == *$substr ]] && return 0 || return 1
 }
 
 ##
@@ -68,7 +68,7 @@ STRING_include() {
     local substr="$1"
     local string="$2"
 
-    [[ "$string" == *"$substr"* ]] && return 0 || return 1
+    [[ $string == *$substr* ]] && return 0 || return 1
 }
 
 ##

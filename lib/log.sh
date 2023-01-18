@@ -5,7 +5,7 @@
 LOG_info() {
     local msg="$1"
 
-    _log 'INFO' "$msg"
+    _LOG_write 'INFO' "$msg"
 
     return 0
 }
@@ -15,7 +15,7 @@ LOG_info() {
 LOG_warn() {
     local msg="$1"
 
-    _log 'WARNING' "$msg"
+    _LOG_write 'WARNING' "$msg"
 
     return 0
 }
@@ -25,7 +25,7 @@ LOG_warn() {
 LOG_error() {
     local msg="$1"
 
-    _log 'ERROR' "$msg"
+    _LOG_write 'ERROR' "$msg"
 
     return 1
 }
@@ -35,14 +35,14 @@ LOG_error() {
 LOG_fatal() {
     local msg="$1"
 
-    _log 'FATAL' "$msg"
+    _LOG_write 'FATAL' "$msg"
 
     return 1
 }
 
 # PRIVATE API
 
-_log() {
+_LOG_write() {
     if [[ -z $LOG_directory ]]; then
         echo "You must set LOG_directory='DIR' in your script!"
         return 1
