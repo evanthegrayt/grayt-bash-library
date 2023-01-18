@@ -5,7 +5,7 @@ ARRAY_include() {
     local needle="$1"
 
     for element in "${@:2}"; do
-        if [[ "$element" == "$needle" ]]; then
+        if [[ $element == $needle ]]; then
             return 0
         fi
     done
