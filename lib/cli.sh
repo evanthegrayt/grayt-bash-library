@@ -8,14 +8,14 @@ CLI_abort() {
 
 ##
 # Print a message with color.
+# https://stackoverflow.com/a/33206814/2489882
+# https://notes.burke.libbey.me/ansi-escape-codes/
 #
-# Usage: CLI_echoc MESSAGE [TEXT_COLOR] [BACKGROUND_COLOR] [TEXT_MODIFIERS]
-#
-# Valid colors are:
-#   black red green yellow blue purple cyan white
-#
-# Valid text modifiers are:
-#   normal bold italic underline blink fastblink bright
+# Usage: CLI_echoc [OPTIONS] MESSAGE
+# Options:  -B          | Bright
+#           -f COLOR    | Foreground (black red green yellow blue purple cyan white)
+#           -b COLOR    | Background (black red green yellow blue purple cyan white)
+#           -m MODIFIER | Modifier(s) (normal bold faint italic underline blink fastblink)
 #
 # The matcher for `text_modifiers` matches as long as the string contains the
 # required substring. So, if you were to pass "italics bolded" instead of
@@ -25,28 +25,58 @@ CLI_abort() {
 # need to be enabled via your terminal's configuration.
 #
 # @example
-#   CLI_echoc "Hello world" blue white "bold italic"
-#
-#   # With some parameters omitted:
-#   CLI_echoc "Hello world" "" "" "bold italic"
+#   CLI_echoc -f blue -b white -m bold -m italic "Hello world"
 CLI_echoc() {
-    local message="$1"
-    local color="$2"
-    local background_color="$3"
-    local text_modifiers="$4"
+    local color=""
+    local background_color=""
+    local text_modifiers=""
+    local bright=false
 
     local i
-    local color_string='\e['
+    local color_string='\033['
     local fg_color_prefix="3"
     local bg_color_prefix="4"
     local basic_modifiers=(normal bold faint italic underline blink fastblink)
 
-    if [[ -n $text_modifiers ]]; then
-        if [[ $text_modifiers == *bright* ]]; then
-            fg_color_prefix="9"
-            bg_color_prefix="10"
-        fi
+    local OPTIND
 
+    while getopts "f:b:m:Bh" opts; do
+        case "$opts" in
+            B)
+                bright=true
+                ;;
+            m)
+                text_modifiers+=$OPTARG
+                ;;
+            f)
+                color=$OPTARG
+                ;;
+            b)
+                background_color=$OPTARG
+                ;;
+            h)
+                echo "USAGE: CLI_echoc [OPTIONS] MESSAGE"
+                echo
+                echo "Options:"
+                echo "-B             | Bright"
+                echo "-f COLOR       | Foreground color"
+                echo "-b COLOR       | Background color"
+                echo "-m MODIFIER(S) | normal bold faint italic underline blink fastblink"
+                return
+                ;;
+        esac
+    done
+
+    shift $(( OPTIND - 1 ))
+
+    local message="$1"
+
+    if $bright; then
+        fg_color_prefix="9"
+        bg_color_prefix="10"
+    fi
+
+    if [[ -n $text_modifiers ]]; then
         for (( i = 0; i < ${#basic_modifiers[@]}; i++ )); do
             [[ $text_modifiers == *${basic_modifiers[$i]}* ]] && color_string+="$i;"
         done
