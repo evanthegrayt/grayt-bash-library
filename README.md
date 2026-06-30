@@ -121,12 +121,14 @@ instructions.
 You can run the tests with `make tests` once you have `bats` installed.
 
 ## Compatibility
-I want to try and maintain POSIX compatibility where possible. Most of the
-scripts I write are in `bash` for portability, but I use `zsh` for my
-interactive shell, and I don't want to maintain two different libraries.
+I want to try and maintain compatibility with both `bash` and `zsh` where
+possible.  Most of the scripts I write are in `bash` for portability, but I use
+`zsh` for my interactive shell, and I don't want to maintain two different
+libraries. Note that I do *not* attempt to maintain POSIX compatibility.
 
 That said, if you see something that could be done in a better way, please
-[submit an issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new)
+[submit an
+issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new).
 
 ## Support this project
 I love knowing when people find my work useful. Any kind of support is very much
