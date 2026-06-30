@@ -59,11 +59,11 @@ uppercase. For instance, functions in `date.sh` are formatted like so:
 ```sh
 # date.sh
 
-DATE_get_month_name() {
+DATE_month_name() {
   # stuff
 }
 
-DATE_todays_date() {
+DATE_today() {
   # more stuf
 }
 # Etc...
@@ -93,7 +93,7 @@ variable:
 ```sh
 source date.sh
 
-today=$( DATE_todays_date )
+today=$( DATE_today )
 
 echo $today
 
@@ -107,7 +107,7 @@ function directly:
 ```sh
 source date.sh
 
-DATE_todays_date
+DATE_today
 
 # => 20190328
 ```
@@ -128,8 +128,10 @@ interactive shell, and I don't want to maintain two different libraries.
 That said, if you see something that could be done in a better way, please
 [submit an issue](https://github.com/evanthegrayt/grayt-bash-library/issues/new)
 
-## Self-Promotion
-I do these projects for fun, and I enjoy knowing that they're helpful to people.
-Consider starring [the
-repository](https://github.com/evanthegrayt/grayt-bash-library) if you like it!
-If you love it, follow me [on github](https://github.com/evanthegrayt)!
+## Support this project
+I love knowing when people find my work useful. Any kind of support is very much
+appreciated!
+
+- ⭐️ Like the project? Star [the repository](https://github.com/evanthegrayt/grayt-bash-library)!
+- ❤️ Love the project? Follow me [on GitHub](https://github.com/evanthegrayt)!
+- 💸 *Really* love it? Consider [buying me a tea](https://paypal.me/evanrgray)!
